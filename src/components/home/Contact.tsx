@@ -23,25 +23,28 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Construct form data for Google Sheets
-      const formDataToSend = new FormData();
+      // Construct the form data for Google Sheets
+      const formBody = new URLSearchParams();
+      formBody.append('entry.2005620554', formData.name); // Name field
+      formBody.append('entry.1045781291', formData.email); // Email field  
+      formBody.append('entry.1166974658', formData.phone); // Phone field
+      formBody.append('entry.1065046570', formData.course); // Course field
+      formBody.append('entry.839337160', formData.message); // Message field
       
-      // Map our form fields to Google Form fields
-      formDataToSend.append('entry.2005620554', formData.name); // Name field
-      formDataToSend.append('entry.1045781291', formData.email); // Email field  
-      formDataToSend.append('entry.1166974658', formData.phone); // Phone field
-      formDataToSend.append('entry.1065046570', formData.course); // Course field
-      formDataToSend.append('entry.839337160', formData.message); // Message field
-      
-      // Google Sheets endpoint (would need to be set up with proper form ID)
+      // Google Sheets endpoint
       const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyKEzRczH21Ru_EHCxYTQM_9-nHEQC4hVXKP-EBaJHRe0TUXApOujkBnL-O-fVVk-Nd/exec';
       
-      // Send data to Google Sheets
-      await fetch(googleScriptUrl, {
+      // Send data using fetch with CORS mode
+      const response = await fetch(googleScriptUrl, {
         method: 'POST',
-        mode: 'no-cors', // Important for CORS issues
-        body: formDataToSend
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: formBody.toString()
       });
+      
+      console.log('Form submission response:', response);
       
       // Reset form
       setFormData({
