@@ -1,0 +1,132 @@
+
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, Code, Robot, Brain, Database } from 'lucide-react';
+
+const coursesData = {
+  5: {
+    title: "Class 5th: Foundations of Technology",
+    focus: "Building foundational knowledge in technology, programming, IoT, and logical thinking",
+    core_subjects: [
+      "Computer Basics",
+      "Scratch Programming",
+      "IoT Introduction",
+      "Basic AI Concepts",
+      "Project Management"
+    ],
+    skills: [
+      "Basic technology understanding",
+      "Simple IoT project design",
+      "Logical problem-solving",
+      "Teamwork skills"
+    ]
+  },
+  6: {
+    title: "Class 6th: Emerging Tech Exploration",
+    focus: "Strengthening foundational programming and introducing IoT and AI concepts",
+    core_subjects: [
+      "Python Programming Basics",
+      "IoT Sensor Work",
+      "Basic Data Science",
+      "AI Fundamentals",
+      "Collaborative Learning"
+    ],
+    skills: [
+      "Python programming basics",
+      "IoT device interaction",
+      "Data visualization",
+      "Team collaboration"
+    ]
+  },
+  // Add more classes...
+};
+
+const SchoolTechCourses: React.FC = () => {
+  const [selectedClass, setSelectedClass] = useState<number | null>(null);
+
+  const renderClassCard = (classNumber: number) => {
+    const course = coursesData[classNumber as keyof typeof coursesData];
+    
+    return (
+      <motion.div 
+        key={`class-${classNumber}`}
+        className="glass-card p-6 rounded-xl space-y-4 bg-neuron-dark/50"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -20 }}
+      >
+        <h3 className="text-2xl font-bold text-white">{course.title}</h3>
+        <p className="text-gray-300">{course.focus}</p>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div>
+            <h4 className="text-lg font-semibold text-neuron-accent mb-2">Core Subjects</h4>
+            <ul className="space-y-2 text-gray-400">
+              {course.core_subjects.map((subject, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <Code className="w-4 h-4 text-neuron-light" />
+                  {subject}
+                </li>
+              ))}
+            </ul>
+          </div>
+          
+          <div>
+            <h4 className="text-lg font-semibold text-neuron-accent mb-2">Skills Acquired</h4>
+            <ul className="space-y-2 text-gray-400">
+              {course.skills.map((skill, index) => (
+                <li key={index} className="flex items-center gap-2">
+                  <Robot className="w-4 h-4 text-neuron-light" />
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </motion.div>
+    );
+  };
+
+  return (
+    <section id="school-tech-courses" className="bg-gradient-to-b from-neuron-dark to-[#1A1F2C] py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <span className="text-white">Future-Ready </span>
+            <span className="text-gradient">Tech Courses</span>
+          </h2>
+          <p className="text-gray-400 max-w-3xl mx-auto">
+            Comprehensive technology education tailored for school students, blending foundational learning with cutting-edge technologies.
+          </p>
+        </div>
+        
+        <div className="flex flex-wrap justify-center gap-4 mb-8">
+          {[5, 6, 7, 8, 9, 10, 11, 12].map((classNumber) => (
+            <button
+              key={classNumber}
+              onClick={() => setSelectedClass(classNumber)}
+              className={`
+                px-4 py-2 rounded-full transition-all
+                ${selectedClass === classNumber 
+                  ? 'bg-neuron-accent text-white' 
+                  : 'bg-white/10 text-gray-300 hover:bg-white/20'}
+              `}
+            >
+              Class {classNumber}
+            </button>
+          ))}
+        </div>
+        
+        <AnimatePresence>
+          {selectedClass && (
+            <div className="mt-8">
+              {renderClassCard(selectedClass)}
+            </div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  );
+};
+
+export default SchoolTechCourses;
