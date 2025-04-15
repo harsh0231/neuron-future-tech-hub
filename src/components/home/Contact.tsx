@@ -23,13 +23,13 @@ const Contact = () => {
     setIsSubmitting(true);
     
     try {
-      // Construct the form data for Google Sheets
+      // Construct the form data to match the Google Sheets script expectations
       const formBody = new URLSearchParams();
-      formBody.append('entry.2005620554', formData.name); // Name field
-      formBody.append('entry.1045781291', formData.email); // Email field  
-      formBody.append('entry.1166974658', formData.phone); // Phone field
-      formBody.append('entry.1065046570', formData.course); // Course field
-      formBody.append('entry.839337160', formData.message); // Message field
+      formBody.append('name', formData.name); // Direct parameter names
+      formBody.append('email', formData.email);
+      formBody.append('phone', formData.phone);
+      formBody.append('course', formData.course);
+      formBody.append('message', formData.message);
       
       // Google Sheets endpoint
       const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyKEzRczH21Ru_EHCxYTQM_9-nHEQC4hVXKP-EBaJHRe0TUXApOujkBnL-O-fVVk-Nd/exec';

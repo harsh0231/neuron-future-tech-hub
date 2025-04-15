@@ -14,20 +14,33 @@ function doPost(e) {
     const ss = SpreadsheetApp.openById('14CXjmdMoz4ww5TgrgoDvrMbKgY9e7lHRzg4dCtf83BY');
     const sheet = ss.getSheetByName('Form Responses') || ss.insertSheet('Form Responses');
     
+    // Get timestamp
+    const timestamp = new Date();
+    
     // Add headers if the sheet is empty
     if (sheet.getLastRow() === 0) {
       sheet.appendRow(['Timestamp', 'Name', 'Email', 'Phone', 'Course', 'Message']);
     }
     
+    // Extract the form fields - using direct parameter access instead of entry.X format
+    const name = params.name || '';
+    const email = params.email || '';
+    const phone = params.phone || '';
+    const course = params.course || '';
+    const message = params.message || '';
+    
     // Append the form data to the sheet
     sheet.appendRow([
-      new Date(),
-      params['entry.2005620554'] || '',  // Name
-      params['entry.1045781291'] || '',  // Email
-      params['entry.1166974658'] || '',  // Phone
-      params['entry.1065046570'] || '',  // Course
-      params['entry.839337160'] || ''    // Message
+      timestamp,
+      name,
+      email,
+      phone,
+      course,
+      message
     ]);
+    
+    // Send email notification
+    sendEmailNotification(name, email, phone, course, message);
     
     // Return success response
     return ContentService
@@ -42,6 +55,32 @@ function doPost(e) {
     return ContentService
       .createTextOutput(JSON.stringify({ 'result': 'error', 'error': error.toString() }))
       .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+// Function to send email notification
+function sendEmailNotification(name, email, phone, course, message) {
+  try {
+    const emailSubject = "New Contact Form Submission - Neuron AI & Robotics";
+    const emailBody = `
+      New contact form submission received:
+      
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Interested In: ${course}
+      Message: ${message}
+      
+      Timestamp: ${new Date().toString()}
+    `;
+    
+    // Send email to the specified address
+    GmailApp.sendEmail("info@neuron.org.in", emailSubject, emailBody);
+    
+    return true;
+  } catch (error) {
+    console.error("Error sending email notification:", error);
+    return false;
   }
 }
 
