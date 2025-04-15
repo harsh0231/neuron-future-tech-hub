@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Code, Robot, Brain, Database } from 'lucide-react';
+import { ChevronDown, Code, Bot, Brain, Database } from 'lucide-react';
 
 const coursesData = {
   5: {
@@ -38,7 +37,108 @@ const coursesData = {
       "Team collaboration"
     ]
   },
-  // Add more classes...
+  7: {
+    title: "Class 7th: AI and IoT Integration",
+    focus: "Integrating AI and IoT for real-world applications",
+    core_subjects: [
+      "Advanced Python",
+      "IoT Project Development",
+      "AI Application",
+      "Data Analysis",
+      "Critical Thinking"
+    ],
+    skills: [
+      "Advanced Python programming",
+      "IoT project implementation",
+      "AI application development",
+      "Data analysis and interpretation"
+    ]
+  },
+  8: {
+    title: "Class 8th: Robotics and AI",
+    focus: "Exploring robotics combined with AI for automation",
+    core_subjects: [
+      "Robotics Introduction",
+      "AI Algorithms",
+      "Sensor Integration",
+      "Automation",
+      "Design Thinking"
+    ],
+    skills: [
+      "Robotics design and control",
+      "AI algorithm implementation",
+      "Sensor integration",
+      "Automation techniques"
+    ]
+  },
+  9: {
+    title: "Class 9th: Advanced AI and Machine Learning",
+    focus: "Delving into advanced AI and machine learning concepts",
+    core_subjects: [
+      "Machine Learning",
+      "Neural Networks",
+      "Data Mining",
+      "Predictive Analysis",
+      "Ethical AI"
+    ],
+    skills: [
+      "Machine learning model development",
+      "Neural network design",
+      "Data mining techniques",
+      "Predictive analysis skills"
+    ]
+  },
+  10: {
+    title: "Class 10th: Robotics and Automation Systems",
+    focus: "Designing and implementing complex robotic systems",
+    core_subjects: [
+      "Advanced Robotics",
+      "Control Systems",
+      "AI in Robotics",
+      "System Design",
+      "Innovation"
+    ],
+    skills: [
+      "Robotics system design",
+      "Control system implementation",
+      "AI integration in robotics",
+      "System design and innovation"
+    ]
+  },
+  11: {
+    title: "Class 11th: AI-Driven IoT Solutions",
+    focus: "Creating AI-driven IoT solutions for smart environments",
+    core_subjects: [
+      "IoT Architecture",
+      "AI Integration",
+      "Cloud Computing",
+      "Data Security",
+      "Solution Deployment"
+    ],
+    skills: [
+      "IoT architecture design",
+      "AI integration in IoT",
+      "Cloud computing skills",
+      "Data security implementation"
+    ]
+  },
+  12: {
+    title: "Class 12th: Capstone Project in AI and Robotics",
+    focus: "Developing a capstone project integrating AI and robotics",
+    core_subjects: [
+      "Project Management",
+      "Advanced AI",
+      "Robotics Application",
+      "Research",
+      "Presentation Skills"
+    ],
+    skills: [
+      "Project management skills",
+      "Advanced AI application",
+      "Robotics project implementation",
+      "Research and presentation skills"
+    ]
+  },
 };
 
 const SchoolTechCourses: React.FC = () => {
@@ -76,7 +176,7 @@ const SchoolTechCourses: React.FC = () => {
             <ul className="space-y-2 text-gray-400">
               {course.skills.map((skill, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <Robot className="w-4 h-4 text-neuron-light" />
+                  <Bot className="w-4 h-4 text-neuron-light" />
                   {skill}
                 </li>
               ))}
