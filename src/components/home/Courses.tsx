@@ -1,5 +1,5 @@
 
-import { Download, ArrowRight, Python, Database, Bot, Brain, Eye, BarChart2 } from 'lucide-react';
+import { Download, ArrowRight, Code, Database, Bot, Brain, Eye, BarChart2 } from 'lucide-react';
 import TechIcon from '@/components/ui/TechIcon';
 
 const courses = [
@@ -53,7 +53,7 @@ const Courses = () => {
         
         <div className="flex justify-center gap-6 mb-12 flex-wrap">
           <TechIcon 
-            icon={<Python className="w-8 h-8 text-white" />} 
+            icon={<Code className="w-8 h-8 text-white" />} 
             label="Python" 
             color="bg-gradient-to-r from-neuron-primary to-red-500"
             delay={0}
