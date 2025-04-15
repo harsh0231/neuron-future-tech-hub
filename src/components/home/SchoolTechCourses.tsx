@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Code, Bot, Brain, Database } from 'lucide-react';
@@ -150,7 +151,7 @@ const SchoolTechCourses: React.FC = () => {
     return (
       <motion.div 
         key={`class-${classNumber}`}
-        className="glass-card p-6 rounded-xl space-y-4 bg-neuron-dark/50"
+        className="glass-card p-6 rounded-xl space-y-4 bg-black/50"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
@@ -160,11 +161,11 @@ const SchoolTechCourses: React.FC = () => {
         
         <div className="grid md:grid-cols-2 gap-4">
           <div>
-            <h4 className="text-lg font-semibold text-neuron-accent mb-2">Core Subjects</h4>
+            <h4 className="text-lg font-semibold text-neuron-primary mb-2">Core Subjects</h4>
             <ul className="space-y-2 text-gray-400">
               {course.core_subjects.map((subject, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <Code className="w-4 h-4 text-neuron-light" />
+                  <Code className="w-4 h-4 text-neuron-primary" />
                   {subject}
                 </li>
               ))}
@@ -172,11 +173,11 @@ const SchoolTechCourses: React.FC = () => {
           </div>
           
           <div>
-            <h4 className="text-lg font-semibold text-neuron-accent mb-2">Skills Acquired</h4>
+            <h4 className="text-lg font-semibold text-neuron-primary mb-2">Skills Acquired</h4>
             <ul className="space-y-2 text-gray-400">
               {course.skills.map((skill, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <Bot className="w-4 h-4 text-neuron-light" />
+                  <Bot className="w-4 h-4 text-neuron-primary" />
                   {skill}
                 </li>
               ))}
@@ -188,7 +189,7 @@ const SchoolTechCourses: React.FC = () => {
   };
 
   return (
-    <section id="school-tech-courses" className="bg-gradient-to-b from-neuron-dark to-[#1A1F2C] py-16 md:py-24">
+    <section id="school-tech-courses" className="bg-gradient-to-b from-neuron-dark to-black py-16 md:py-24">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -208,7 +209,7 @@ const SchoolTechCourses: React.FC = () => {
               className={`
                 px-4 py-2 rounded-full transition-all
                 ${selectedClass === classNumber 
-                  ? 'bg-neuron-accent text-white' 
+                  ? 'bg-neuron-primary text-white' 
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'}
               `}
             >

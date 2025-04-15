@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,20 +13,37 @@ const Contact = () => {
   });
   
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formSubmitted, setFormSubmitted] = useState(false);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate API call
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormSubmitted(true);
+    try {
+      // Construct form data for Google Sheets
+      const formDataToSend = new FormData();
+      
+      // Map our form fields to Google Form fields
+      formDataToSend.append('entry.2005620554', formData.name); // Name field
+      formDataToSend.append('entry.1045781291', formData.email); // Email field  
+      formDataToSend.append('entry.1166974658', formData.phone); // Phone field
+      formDataToSend.append('entry.1065046570', formData.course); // Course field
+      formDataToSend.append('entry.839337160', formData.message); // Message field
+      
+      // Google Sheets endpoint (would need to be set up with proper form ID)
+      const googleScriptUrl = 'https://script.google.com/macros/s/AKfycbyKEzRczH21Ru_EHCxYTQM_9-nHEQC4hVXKP-EBaJHRe0TUXApOujkBnL-O-fVVk-Nd/exec';
+      
+      // Send data to Google Sheets
+      await fetch(googleScriptUrl, {
+        method: 'POST',
+        mode: 'no-cors', // Important for CORS issues
+        body: formDataToSend
+      });
+      
+      // Reset form
       setFormData({
         name: '',
         email: '',
@@ -33,12 +51,23 @@ const Contact = () => {
         course: '',
         message: ''
       });
-      
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setFormSubmitted(false);
-      }, 5000);
-    }, 1500);
+
+      // Show success message
+      toast({
+        title: "Form Submitted Successfully",
+        description: "Thank you for contacting us! We'll get back to you soon.",
+        variant: "default",
+      });
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast({
+        title: "Error Submitting Form",
+        description: "There was an error submitting your form. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -57,12 +86,6 @@ const Contact = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="glass-card p-8 rounded-xl">
             <h3 className="text-2xl font-semibold mb-6 text-white">Get in Touch</h3>
-            
-            {formSubmitted ? (
-              <div className="bg-green-500/20 border border-green-500/30 rounded-lg p-4 mb-6">
-                <p className="text-green-400 font-medium">Thank you for contacting us! We'll get back to you soon.</p>
-              </div>
-            ) : null}
             
             <form onSubmit={handleSubmit}>
               <div className="mb-5">
@@ -141,7 +164,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-neuron-primary to-neuron-accent text-white py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-neuron-accent/20 flex items-center justify-center"
+                className="w-full bg-gradient-to-r from-neuron-primary to-red-600 text-white py-3 rounded-lg font-medium transition-all hover:shadow-lg hover:shadow-neuron-accent/20 flex items-center justify-center"
               >
                 {isSubmitting ? (
                   <span className="flex items-center">
@@ -198,10 +221,14 @@ const Contact = () => {
             </div>
             
             <div className="aspect-video w-full rounded-xl overflow-hidden">
-              {/* Embed Google Maps iframe here */}
-              <div className="w-full h-full bg-neuron-primary/20 flex items-center justify-center">
-                <p className="text-gray-400">Google Maps Embed</p>
-              </div>
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3662.9721121323!2d85.33499461544382!3d23.350732484784693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e1a777777777%3A0xa7a7a7a7a7a7a7a7!2sEast%20Jail%20Road%2C%20Ranchi%2C%20Jharkhand%20834001!5e0!3m2!1sen!2sin!4v1625012345678!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                className="border-0" 
+                loading="lazy"
+                title="Neuron AI & Robotics Location"
+              ></iframe>
             </div>
           </div>
         </div>

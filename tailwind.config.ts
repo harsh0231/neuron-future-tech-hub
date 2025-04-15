@@ -54,11 +54,11 @@ export default {
 					foreground: 'hsl(var(--card-foreground))'
 				},
 				neuron: {
-					primary: "#7E69AB",
-					secondary: "#6E59A5",
-					dark: "#1A1F2C",
-					light: "#D6BCFA",
-					accent: "#8B5CF6",
+					primary: "#ea384c",
+					secondary: "#c52938",
+					dark: "#121212",
+					light: "#ff6b7d",
+					accent: "#ff4d63",
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
