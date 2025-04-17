@@ -8,7 +8,8 @@ import Products from '@/components/home/Products';
 import Contact from '@/components/home/Contact';
 import ParticleBackground from '@/components/home/ParticleBackground';
 import SchoolTechCourses from '@/components/home/SchoolTechCourses';
-import Reviews from '@/components/home/Reviews'; // New import
+import Reviews from '@/components/home/Reviews';
+import ProjectShowcase from '@/components/home/ProjectShowcase';
 
 const Index = () => {
   return (
@@ -18,7 +19,8 @@ const Index = () => {
       <WhyChoose />
       <Courses />
       <SchoolTechCourses />
-      <Reviews /> {/* Added new Reviews component */}
+      <ProjectShowcase />
+      <Reviews />
       <About />
       <Products />
       <Contact />
