@@ -1,8 +1,7 @@
-
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
-import RobotAnimation from './RobotAnimation';
+import NeuronAnimation from './NeuronAnimation';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -50,7 +49,30 @@ const Hero = () => {
     })
   };
 
-  // Define colors directly instead of using theme context
+  const titleVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        damping: 12,
+        stiffness: 100
+      }
+    }
+  };
+
   const colors = {
     primary: '#9b87f5',
     accent: '#7c64f3',
@@ -71,39 +93,35 @@ const Hero = () => {
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
           <div className="flex-1 max-w-3xl">
-            <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            <motion.div
+              className="mb-6"
               initial="hidden"
               animate="visible"
-              variants={{
-                hidden: {},
-                visible: {
-                  transition: {
-                    staggerChildren: 0.1
-                  }
-                }
-              }}
+              variants={titleVariants}
             >
-              <motion.span 
-                className="text-white block"
-                variants={textVariants}
-                custom={0}
+              <motion.h1 
+                className="text-4xl md:text-5xl lg:text-6xl font-bold"
+                variants={titleVariants}
               >
-                Empowering Futures with
-              </motion.span>
-              <motion.span 
-                className="text-gradient"
-                variants={textVariants}
-                custom={1}
-                style={{
-                  background: `linear-gradient(to right, ${colors.light}, ${colors.accent}, ${colors.primary})`,
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent'
-                }}
-              >
-                AI & Robotics Education
-              </motion.span>
-            </motion.h1>
+                <motion.span 
+                  className="text-white block mb-2"
+                  variants={letterVariants}
+                >
+                  Empowering Futures with
+                </motion.span>
+                <motion.span 
+                  className="text-gradient"
+                  variants={letterVariants}
+                  style={{
+                    background: `linear-gradient(to right, ${colors.light}, ${colors.accent}, ${colors.primary})`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent'
+                  }}
+                >
+                  AI & Robotics Education
+                </motion.span>
+              </motion.h1>
+            </motion.div>
             
             <motion.p 
               className="text-gray-300 text-lg md:text-xl mb-8"
@@ -146,8 +164,8 @@ const Hero = () => {
             </div>
           </div>
           
-          <div className="flex-1 relative">
-            <RobotAnimation />
+          <div className="flex-1 relative h-[500px]">
+            <NeuronAnimation />
           </div>
         </div>
       </div>
