@@ -1,12 +1,11 @@
+
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { useTheme } from '@/contexts/ThemeContext';
 import RobotAnimation from './RobotAnimation';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { colorTheme } = useTheme();
   
   useEffect(() => {
     const container = containerRef.current;
@@ -51,25 +50,12 @@ const Hero = () => {
     })
   };
 
-  const themeColors = {
-    red: {
-      primary: '#ea384c',
-      accent: '#ff4d63',
-      light: '#ff6b7d'
-    },
-    yellow: {
-      primary: '#ffd700',
-      accent: '#ffed4a',
-      light: '#fff4b4'
-    },
-    violet: {
-      primary: '#9b87f5',
-      accent: '#7c64f3',
-      light: '#b4a6f7'
-    }
+  // Define colors directly instead of using theme context
+  const colors = {
+    primary: '#9b87f5',
+    accent: '#7c64f3',
+    light: '#b4a6f7'
   };
-
-  const currentColors = themeColors[colorTheme];
 
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-neuron-dark">
@@ -78,7 +64,7 @@ const Hero = () => {
         className="particles-container"
         aria-hidden="true"
         style={{
-          '--particle-color': currentColors.primary
+          '--particle-color': colors.primary
         } as any}
       ></div>
       
@@ -110,7 +96,7 @@ const Hero = () => {
                 variants={textVariants}
                 custom={1}
                 style={{
-                  background: `linear-gradient(to right, ${currentColors.light}, ${currentColors.accent}, ${currentColors.primary})`,
+                  background: `linear-gradient(to right, ${colors.light}, ${colors.accent}, ${colors.primary})`,
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent'
                 }}
