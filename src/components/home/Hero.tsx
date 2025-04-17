@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/contexts/ThemeContext';
+import RobotAnimation from './RobotAnimation';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -160,36 +161,7 @@ const Hero = () => {
           </div>
           
           <div className="flex-1 relative">
-            <div className="relative w-full aspect-square max-w-lg mx-auto">
-              <motion.div 
-                className="absolute inset-0 rounded-full opacity-20 blur-3xl"
-                style={{
-                  background: `linear-gradient(to bottom right, ${currentColors.primary}, ${currentColors.accent})`
-                }}
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.2, 0.3, 0.2]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }}
-              />
-              
-              <div className="absolute inset-0 bg-gradient-to-br from-neuron-primary to-neuron-accent rounded-full opacity-20 blur-3xl animate-pulse-soft"></div>
-              <div className="w-full h-full relative flex items-center justify-center">
-                <div className="w-64 h-64 md:w-80 md:h-80 relative animate-float">
-                  <div className="absolute inset-0 bg-gradient-to-tr from-neuron-primary to-neuron-accent rounded-full opacity-30"></div>
-                  <div className="absolute inset-4 bg-neuron-dark rounded-full flex items-center justify-center">
-                    <div className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-neuron-light to-neuron-primary">N</div>
-                  </div>
-                </div>
-                <div className="absolute top-1/4 -left-4 w-20 h-20 bg-gradient-to-br from-neuron-accent to-neuron-primary rounded-2xl animate-float" style={{ animationDelay: "0.5s" }}></div>
-                <div className="absolute bottom-1/4 -right-4 w-16 h-16 bg-gradient-to-tl from-neuron-primary to-neuron-light rounded-2xl animate-float" style={{ animationDelay: "1s" }}></div>
-                <div className="absolute -bottom-2 left-1/3 w-14 h-14 bg-gradient-to-tr from-neuron-accent to-neuron-light rounded-lg animate-float" style={{ animationDelay: "1.5s" }}></div>
-              </div>
-            </div>
+            <RobotAnimation />
           </div>
         </div>
       </div>
