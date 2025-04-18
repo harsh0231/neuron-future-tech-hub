@@ -12,6 +12,7 @@ import SchoolTechCourses from '@/components/home/SchoolTechCourses';
 import Reviews from '@/components/home/Reviews';
 import ProjectShowcase from '@/components/home/ProjectShowcase';
 import Gallery from '@/components/home/Gallery';
+import Testimonials from '@/components/home/Testimonials';
 
 const Index = () => {
   return (
@@ -37,6 +38,9 @@ const Index = () => {
         <Reviews />
       </ScrollReveal>
       <ScrollReveal direction="left">
+        <Testimonials />
+      </ScrollReveal>
+      <ScrollReveal direction="right">
         <About />
       </ScrollReveal>
       <ScrollReveal>

@@ -186,12 +186,12 @@ const Courses = () => {
   return (
     <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-white">Our </span>
             <span className="text-gradient">Courses</span>
           </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">
+          <p className="text-gray-400 mx-auto">
             Comprehensive programs designed to equip you with industry-relevant skills in AI, robotics, and data science.
           </p>
         </div>
@@ -241,7 +241,7 @@ const Courses = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {courses.map((course, index) => (
             <div 
               key={index} 
@@ -315,7 +315,7 @@ const Courses = () => {
           </button>
         </div>
         
-        <div className="mt-16 glass-card p-8 rounded-xl">
+        <div className="mt-16 glass-card p-8 rounded-xl max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">Innovator's Pathway Package</h3>
             <p className="text-gray-400">Get all four courses at a discounted price</p>

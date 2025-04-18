@@ -1,6 +1,6 @@
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Brain, Cpu, CircuitBoard, Server, Layers, Activity } from 'lucide-react';
+import { Menu, X, Brain, Cpu, CircuitBoard, Server, Layers, Activity, Rocket, Zap, Monitor } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -26,24 +26,38 @@ const Navbar = () => {
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
           <a href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-neuron-accent via-neuron-primary to-neuron-secondary flex items-center justify-center overflow-hidden">
+            <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-neuron-accent via-neuron-primary to-neuron-secondary flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-neuron-primary to-neuron-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              {/* Animated network patterns */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping"></div>
-                <div className="absolute top-3/4 left-1/2 w-1 h-1 bg-white rounded-full animate-ping animation-delay-300"></div>
-                <div className="absolute top-1/2 left-3/4 w-1 h-1 bg-white rounded-full animate-ping animation-delay-600"></div>
-                <div className="absolute top-1/3 left-2/3 w-1 h-1 bg-white rounded-full animate-ping animation-delay-900"></div>
-                <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-white rounded-full animate-ping animation-delay-1200"></div>
+              {/* Dynamic circuit patterns */}
+              <div className="absolute inset-0">
+                <div className="absolute top-0 left-0 w-full h-full">
+                  <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border border-white/20 rounded-full animate-[spin_8s_linear_infinite]"></div>
+                  <div className="absolute top-1/3 left-1/3 w-1/3 h-1/3 border border-white/30 rounded-full animate-[spin_5s_linear_infinite_reverse]"></div>
+                  <div className="absolute top-[45%] left-[45%] w-[10%] h-[10%] bg-white rounded-full animate-ping"></div>
+                  
+                  {/* Circuit lines */}
+                  <div className="absolute top-[20%] left-0 w-[80%] h-[1px] bg-white/20 animate-pulse"></div>
+                  <div className="absolute top-[70%] left-[20%] w-[80%] h-[1px] bg-white/20 animate-pulse delay-100"></div>
+                  <div className="absolute top-0 left-[30%] w-[1px] h-[70%] bg-white/20 animate-pulse delay-200"></div>
+                  <div className="absolute top-[30%] left-[80%] w-[1px] h-[70%] bg-white/20 animate-pulse delay-300"></div>
+                </div>
               </div>
               
-              {/* Main logo icons */}
-              <div className="relative z-10 grid grid-cols-2 gap-1">
-                <Brain className="w-4 h-4 text-white animate-pulse" />
-                <Cpu className="w-4 h-4 text-white animate-pulse delay-100" />
-                <Server className="w-4 h-4 text-white animate-pulse delay-200" />
-                <CircuitBoard className="w-4 h-4 text-white animate-pulse delay-300" />
+              {/* Main logo icons - rotating 3D grid */}
+              <div className="relative z-10 w-8 h-8 animate-[spin_10s_linear_infinite]">
+                <div className="absolute grid grid-cols-2 gap-0.5">
+                  <Brain className="w-3.5 h-3.5 text-white animate-pulse" />
+                  <Cpu className="w-3.5 h-3.5 text-white animate-pulse delay-100" />
+                  <Server className="w-3.5 h-3.5 text-white animate-pulse delay-200" />
+                  <CircuitBoard className="w-3.5 h-3.5 text-white animate-pulse delay-300" />
+                </div>
+                <div className="absolute grid grid-cols-2 gap-0.5 rotate-[30deg]">
+                  <Monitor className="w-3.5 h-3.5 text-white/70 animate-pulse delay-400" />
+                  <Rocket className="w-3.5 h-3.5 text-white/70 animate-pulse delay-500" />
+                  <Zap className="w-3.5 h-3.5 text-white/70 animate-pulse delay-600" />
+                  <Activity className="w-3.5 h-3.5 text-white/70 animate-pulse delay-700" />
+                </div>
               </div>
               
               {/* Animated glow effect */}

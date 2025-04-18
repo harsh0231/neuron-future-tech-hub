@@ -73,18 +73,18 @@ const Reviews = () => {
   return (
     <section id="reviews" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-white">Student </span>
             <span className="text-gradient">Reviews</span>
           </h2>
-          <p className="text-gray-400 max-w-3xl mx-auto">
+          <p className="text-gray-400 mx-auto">
             Hear what our students have to say about their learning journey with Neuron AI & Robotics.
           </p>
         </div>
         
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16 max-w-5xl mx-auto">
           {statsData.map((stat, index) => (
             <motion.div
               key={stat.id}

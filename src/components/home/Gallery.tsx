@@ -39,12 +39,19 @@ const Gallery = () => {
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ scale: 1.05, rotate: 1, transition: { duration: 0.3 } }}
                   className="relative aspect-square overflow-hidden rounded-xl"
                 >
                   <img
                     src={image}
                     alt={`Gallery image ${index + 1}`}
-                    className="object-cover w-full h-full hover:scale-110 transition-transform duration-500"
+                    className="object-cover w-full h-full transition-transform duration-500"
+                  />
+                  {/* Overlay gradient on hover */}
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gradient-to-t from-neuron-primary/70 to-transparent"
                   />
                 </motion.div>
               </CarouselItem>
