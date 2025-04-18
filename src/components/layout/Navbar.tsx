@@ -1,6 +1,5 @@
-
 import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Brain, Cpu, CircuitBoard } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -25,11 +24,24 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-neuron-dark/80 backdrop-blur-md py-3 shadow-lg' : 'bg-transparent py-5'}`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
-          <a href="/" className="flex items-center gap-2">
-            <div className="h-10 w-10 rounded-md bg-gradient-to-br from-neuron-accent to-neuron-primary flex items-center justify-center text-white font-bold text-xl">N</div>
-            <div>
-              <h1 className="font-bold text-xl text-white">NEURON</h1>
-              <p className="text-xs text-gray-300">AI & Robotics</p>
+          <a href="/" className="flex items-center gap-3 group">
+            <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-neuron-accent via-neuron-primary to-neuron-secondary flex items-center justify-center overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-neuron-primary to-neuron-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative flex gap-1">
+                <Brain className="w-4 h-4 text-white animate-pulse" />
+                <Cpu className="w-4 h-4 text-white animate-pulse delay-100" />
+                <CircuitBoard className="w-4 h-4 text-white animate-pulse delay-200" />
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <h1 className="font-bold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                NEURON
+              </h1>
+              <div className="flex items-center gap-1">
+                <span className="text-xs font-medium text-neuron-accent">AI</span>
+                <span className="text-xs text-gray-400">&</span>
+                <span className="text-xs font-medium text-neuron-light">Robotics</span>
+              </div>
             </div>
           </a>
           

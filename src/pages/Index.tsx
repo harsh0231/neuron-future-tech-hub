@@ -1,3 +1,4 @@
+
 import Layout from '@/components/layout/Layout';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 import Hero from '@/components/home/Hero';
@@ -10,6 +11,7 @@ import ParticleBackground from '@/components/home/ParticleBackground';
 import SchoolTechCourses from '@/components/home/SchoolTechCourses';
 import Reviews from '@/components/home/Reviews';
 import ProjectShowcase from '@/components/home/ProjectShowcase';
+import Gallery from '@/components/home/Gallery';
 
 const Index = () => {
   return (
@@ -24,6 +26,9 @@ const Index = () => {
       </ScrollReveal>
       <ScrollReveal direction="left">
         <SchoolTechCourses />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Gallery />
       </ScrollReveal>
       <ScrollReveal>
         <ProjectShowcase />
