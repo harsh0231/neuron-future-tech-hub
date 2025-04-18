@@ -1,11 +1,15 @@
-
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import NeuronAnimation from './NeuronAnimation';
 
 const Hero = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll();
+
+  // Scroll-triggered fade effect
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
   
   useEffect(() => {
     const container = containerRef.current;
@@ -51,73 +55,52 @@ const Hero = () => {
     })
   };
 
-  const titleVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100
-      }
-    }
-  };
-
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-neuron-dark">
-      <div 
-        ref={containerRef} 
-        className="particles-container"
-        aria-hidden="true"
-      ></div>
+      <div ref={containerRef} className="particles-container" aria-hidden="true"></div>
       
-      {/* Background neural network animation */}
       <NeuronAnimation />
       
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <motion.div 
+        className="container mx-auto px-4 md:px-6 relative z-10"
+        style={{ opacity, y }}
+      >
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
           <div className="flex-1 max-w-3xl">
-            <motion.div
-              className="mb-6"
+            <motion.h1 
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
               initial="hidden"
               animate="visible"
-              variants={titleVariants}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1
+                  }
+                }
+              }}
             >
-              <motion.h1 
-                className="text-4xl md:text-5xl lg:text-6xl font-bold"
-                variants={titleVariants}
+              <motion.span 
+                className="text-white block"
+                variants={textVariants}
+                custom={0}
               >
-                <motion.span 
-                  className="text-white block mb-2"
-                  variants={letterVariants}
-                >
-                  Empowering Futures with
-                </motion.span>
-                <motion.span 
-                  className="text-gradient"
-                  variants={letterVariants}
-                  style={{
-                    background: "linear-gradient(to right, #ff6b7d, #ff4d63, #ea384c)",
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
-                  AI & Robotics Education
-                </motion.span>
-              </motion.h1>
-            </motion.div>
+                Empowering Futures with
+              </motion.span>
+              <motion.span 
+                className="relative z-10"
+                variants={textVariants}
+                custom={1}
+                style={{
+                  background: 'linear-gradient(135deg, #ff6b7d 0%, #ea384c 50%, #c52938 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  textShadow: '0 2px 10px rgba(234, 56, 76, 0.3)'
+                }}
+              >
+                AI & Robotics Education
+              </motion.span>
+            </motion.h1>
             
             <motion.p 
               className="text-gray-300 text-lg md:text-xl mb-8"
@@ -160,7 +143,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 };

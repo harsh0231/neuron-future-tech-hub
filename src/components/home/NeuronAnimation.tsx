@@ -51,7 +51,7 @@ const NeuronAnimation = () => {
 
   return (
     <motion.div 
-      className="w-full h-full absolute inset-0 pointer-events-none z-0"
+      className="w-full h-full absolute inset-0 pointer-events-none z-0 opacity-40"
       initial="initial"
       animate="animate"
     >

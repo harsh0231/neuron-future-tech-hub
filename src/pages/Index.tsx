@@ -1,5 +1,5 @@
-
 import Layout from '@/components/layout/Layout';
+import ScrollReveal from '@/components/ui/ScrollReveal';
 import Hero from '@/components/home/Hero';
 import WhyChoose from '@/components/home/WhyChoose';
 import Courses from '@/components/home/Courses';
@@ -16,14 +16,30 @@ const Index = () => {
     <Layout>
       <ParticleBackground />
       <Hero />
-      <WhyChoose />
-      <Courses />
-      <SchoolTechCourses />
-      <ProjectShowcase />
-      <Reviews />
-      <About />
-      <Products />
-      <Contact />
+      <ScrollReveal>
+        <WhyChoose />
+      </ScrollReveal>
+      <ScrollReveal direction="right">
+        <Courses />
+      </ScrollReveal>
+      <ScrollReveal direction="left">
+        <SchoolTechCourses />
+      </ScrollReveal>
+      <ScrollReveal>
+        <ProjectShowcase />
+      </ScrollReveal>
+      <ScrollReveal direction="right">
+        <Reviews />
+      </ScrollReveal>
+      <ScrollReveal direction="left">
+        <About />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Products />
+      </ScrollReveal>
+      <ScrollReveal>
+        <Contact />
+      </ScrollReveal>
     </Layout>
   );
 };
