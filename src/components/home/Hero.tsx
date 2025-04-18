@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -22,7 +23,8 @@ const Hero = () => {
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.top = `${Math.random() * 100}%`;
       
-      const colors = ['#7E69AB', '#D6BCFA', '#8B5CF6', '#6E59A5', '#9F7AEA'];
+      // Use red/black theme colors for particles
+      const colors = ['#ea384c', '#ff4d63', '#ff6b7d', 'rgba(234, 56, 76, 0.7)', 'rgba(0, 0, 0, 0.5)'];
       particle.style.background = colors[Math.floor(Math.random() * colors.length)];
       
       const floatDuration = Math.random() * 5 + 8;
@@ -73,22 +75,16 @@ const Hero = () => {
     }
   };
 
-  const colors = {
-    primary: '#9b87f5',
-    accent: '#7c64f3',
-    light: '#b4a6f7'
-  };
-
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden bg-neuron-dark">
       <div 
         ref={containerRef} 
         className="particles-container"
         aria-hidden="true"
-        style={{
-          '--particle-color': colors.primary
-        } as any}
       ></div>
+      
+      {/* Background neural network animation */}
+      <NeuronAnimation />
       
       <div className="container mx-auto px-4 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
@@ -113,7 +109,7 @@ const Hero = () => {
                   className="text-gradient"
                   variants={letterVariants}
                   style={{
-                    background: `linear-gradient(to right, ${colors.light}, ${colors.accent}, ${colors.primary})`,
+                    background: "linear-gradient(to right, #ff6b7d, #ff4d63, #ea384c)",
                     WebkitBackgroundClip: 'text',
                     WebkitTextFillColor: 'transparent'
                   }}
@@ -162,10 +158,6 @@ const Hero = () => {
                 <p className="ml-3 text-white font-medium">Hands-on Learning</p>
               </div>
             </div>
-          </div>
-          
-          <div className="flex-1 relative h-[500px]">
-            <NeuronAnimation />
           </div>
         </div>
       </div>
