@@ -50,8 +50,10 @@ const Gallery = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="hidden md:flex" />
-          <CarouselNext className="hidden md:flex" />
+          <div className="flex justify-center mt-8 gap-4">
+            <CarouselPrevious className="relative inset-0 translate-y-0 left-0 bg-neuron-accent hover:bg-neuron-primary text-white" />
+            <CarouselNext className="relative inset-0 translate-y-0 right-0 bg-neuron-accent hover:bg-neuron-primary text-white" />
+          </div>
         </Carousel>
       </div>
     </section>

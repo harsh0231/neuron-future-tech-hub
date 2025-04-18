@@ -85,6 +85,22 @@
   .glow::after {
     @apply content-[''] absolute w-full h-full top-0 left-0 -z-10 rounded-lg bg-neuron-accent opacity-20 blur-md;
   }
+  
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  
+  .animation-delay-900 {
+    animation-delay: 900ms;
+  }
+  
+  .animation-delay-1200 {
+    animation-delay: 1200ms;
+  }
 }
 
 .particles-container {

@@ -1,5 +1,6 @@
+
 import { useState, useEffect } from 'react';
-import { Menu, X, Brain, Cpu, CircuitBoard } from 'lucide-react';
+import { Menu, X, Brain, Cpu, CircuitBoard, Server, Layers, Activity } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,20 +28,39 @@ const Navbar = () => {
           <a href="/" className="flex items-center gap-3 group">
             <div className="relative h-12 w-12 rounded-xl bg-gradient-to-br from-neuron-accent via-neuron-primary to-neuron-secondary flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-neuron-primary to-neuron-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative flex gap-1">
+              
+              {/* Animated network patterns */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white rounded-full animate-ping"></div>
+                <div className="absolute top-3/4 left-1/2 w-1 h-1 bg-white rounded-full animate-ping animation-delay-300"></div>
+                <div className="absolute top-1/2 left-3/4 w-1 h-1 bg-white rounded-full animate-ping animation-delay-600"></div>
+                <div className="absolute top-1/3 left-2/3 w-1 h-1 bg-white rounded-full animate-ping animation-delay-900"></div>
+                <div className="absolute top-2/3 left-1/3 w-1 h-1 bg-white rounded-full animate-ping animation-delay-1200"></div>
+              </div>
+              
+              {/* Main logo icons */}
+              <div className="relative z-10 grid grid-cols-2 gap-1">
                 <Brain className="w-4 h-4 text-white animate-pulse" />
                 <Cpu className="w-4 h-4 text-white animate-pulse delay-100" />
-                <CircuitBoard className="w-4 h-4 text-white animate-pulse delay-200" />
+                <Server className="w-4 h-4 text-white animate-pulse delay-200" />
+                <CircuitBoard className="w-4 h-4 text-white animate-pulse delay-300" />
               </div>
+              
+              {/* Animated glow effect */}
+              <div className="absolute inset-0 bg-neuron-accent opacity-30 blur-md animate-pulse"></div>
             </div>
+            
             <div className="flex flex-col">
-              <h1 className="font-bold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+              <h1 className="font-bold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-neuron-light group-hover:to-white transition-all duration-300">
                 NEURON
               </h1>
               <div className="flex items-center gap-1">
-                <span className="text-xs font-medium text-neuron-accent">AI</span>
+                <span className="text-xs font-medium text-neuron-accent group-hover:animate-pulse transition-all">AI</span>
                 <span className="text-xs text-gray-400">&</span>
-                <span className="text-xs font-medium text-neuron-light">Robotics</span>
+                <span className="text-xs font-medium text-neuron-light relative group-hover:animate-pulse">
+                  Robotics
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neuron-accent group-hover:w-full transition-all duration-500"></span>
+                </span>
               </div>
             </div>
           </a>
