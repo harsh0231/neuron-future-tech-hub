@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Download, ArrowRight, Code, Database, Bot, Brain, Eye, BarChart2 } from 'lucide-react';
 import TechIcon from '@/components/ui/TechIcon';
@@ -184,14 +183,15 @@ const Courses = () => {
   };
 
   return (
-    <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark">
+    <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark relative overflow-hidden">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        <div className="text-center mb-16 max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
             <span className="text-white">Our </span>
             <span className="text-gradient">Courses</span>
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-neuron-primary to-red-500 rounded-full"></div>
           </h2>
-          <p className="text-gray-400 mx-auto">
+          <p className="text-gray-400 mx-auto max-w-2xl text-lg">
             Comprehensive programs designed to equip you with industry-relevant skills in AI, robotics, and data science.
           </p>
         </div>
@@ -241,34 +241,36 @@ const Courses = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
           {courses.map((course, index) => (
             <div 
               key={index} 
-              className={`glass-card rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 ${expandedCourse === index ? 'xl:col-span-4 row-span-2' : ''}`}
+              className={`glass-card rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 ${
+                expandedCourse === index ? 'xl:col-span-4 row-span-2' : ''
+              }`}
             >
-              <div className={`bg-gradient-to-r ${course.color} h-3`}></div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-3 text-white">{course.title}</h3>
-                <p className="text-gray-400 mb-6">{course.description}</p>
+              <div className={`bg-gradient-to-r ${course.color} h-2`}></div>
+              <div className="p-8">
+                <h3 className="text-2xl font-bold mb-4 text-white">{course.title}</h3>
+                <p className="text-gray-400 mb-6 text-lg">{course.description}</p>
                 
-                <div className="flex justify-between items-end mb-4">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-6">
                   <div>
-                    <span className="text-white text-2xl font-bold">{course.price}</span>
-                    <p className="text-gray-400 text-sm">Duration: {course.duration}</p>
+                    <span className="text-white text-3xl font-bold">{course.price}</span>
+                    <p className="text-gray-400 text-sm mt-1">Duration: {course.duration}</p>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-3 w-full md:w-auto">
                     <button 
                       onClick={() => toggleCourse(index)} 
-                      className={`px-4 py-2 rounded-full text-white border border-neuron-primary hover:bg-neuron-primary/20 transition-all`}
+                      className="px-6 py-2.5 rounded-full text-white border border-neuron-primary hover:bg-neuron-primary/20 transition-all flex-1 md:flex-none"
                     >
                       {expandedCourse === index ? "Close" : "Details"}
                     </button>
                     <a 
                       href="#contact" 
-                      className={`bg-gradient-to-r ${course.color} text-white px-4 py-2 rounded-full ${course.shadow} hover:shadow-lg transition-all`}
+                      className={`bg-gradient-to-r ${course.color} text-white px-6 py-2.5 rounded-full ${course.shadow} hover:shadow-lg transition-all flex-1 md:flex-none text-center`}
                     >
-                      Enroll
+                      Enroll Now
                     </a>
                   </div>
                 </div>
@@ -305,52 +307,52 @@ const Courses = () => {
           ))}
         </div>
         
-        <div className="mt-16 text-center">
-          <button 
-            onClick={handleBrochureDownload}
-            className="inline-flex items-center px-6 py-3 bg-neuron-primary text-white rounded-full font-medium hover:bg-neuron-secondary transition-all"
-          >
-            <Download className="w-5 h-5 mr-2" />
-            Download Course Brochure
-          </button>
-        </div>
-        
-        <div className="mt-16 glass-card p-8 rounded-xl max-w-5xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold mb-2 text-white">Innovator's Pathway Package</h3>
-            <p className="text-gray-400">Get all four courses at a discounted price</p>
+        <div className="mt-24 glass-card p-12 rounded-xl max-w-6xl mx-auto transform hover:scale-[1.02] transition-all duration-300">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white relative inline-block">
+              Innovator's Pathway Package
+              <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-neuron-primary to-red-500 rounded-full"></div>
+            </h3>
+            <p className="text-gray-400 text-lg mt-4">Get all four courses at a special discounted price</p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <table className="w-full">
-                <tbody>
-                  <tr className="border-b border-neuron-primary/10">
-                    <td className="py-3 text-gray-300 font-medium">Number of Courses</td>
-                    <td className="py-3 text-white font-semibold">4</td>
-                  </tr>
-                  <tr className="border-b border-neuron-primary/10">
-                    <td className="py-3 text-gray-300 font-medium">Duration</td>
-                    <td className="py-3 text-white font-semibold">14 Months</td>
-                  </tr>
-                  <tr className="border-b border-neuron-primary/10">
-                    <td className="py-3 text-gray-300 font-medium">Discount</td>
-                    <td className="py-3 text-white font-semibold">15-20% OFF</td>
-                  </tr>
-                  <tr>
-                    <td className="py-3 text-gray-300 font-medium">Seats</td>
-                    <td className="py-3 text-white font-semibold">Limited</td>
-                  </tr>
-                </tbody>
-              </table>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <div className="glass-card p-6 rounded-lg bg-black/30">
+                <table className="w-full">
+                  <tbody className="divide-y divide-neuron-primary/20">
+                    <tr>
+                      <td className="py-4 text-gray-300 font-medium">Number of Courses</td>
+                      <td className="py-4 text-white font-semibold">4</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-gray-300 font-medium">Duration</td>
+                      <td className="py-4 text-white font-semibold">14 Months</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-gray-300 font-medium">Discount</td>
+                      <td className="py-4 text-white font-semibold">15-20% OFF</td>
+                    </tr>
+                    <tr>
+                      <td className="py-4 text-gray-300 font-medium">Seats</td>
+                      <td className="py-4 text-white font-semibold">Limited</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
             
-            <div className="flex flex-col justify-center items-center">
-              <div className="text-center mb-4">
-                <p className="text-gray-400 mb-1">Total Value: <span className="line-through">₹1,24,996</span></p>
-                <p className="text-2xl md:text-3xl font-bold text-white">Discounted Price: ₹99,999</p>
+            <div className="flex flex-col items-center justify-center text-center space-y-6">
+              <div>
+                <p className="text-gray-400 mb-2 text-lg">Total Value: <span className="line-through">₹1,24,996</span></p>
+                <p className="text-3xl md:text-4xl font-bold text-white">
+                  Discounted Price: <span className="text-gradient">₹99,999</span>
+                </p>
               </div>
-              <a href="#contact" className="hero-button bg-gradient-to-r from-neuron-primary to-red-600 text-white shadow-lg shadow-neuron-primary/20 w-full md:w-auto text-center">
+              <a 
+                href="#contact" 
+                className="hero-button bg-gradient-to-r from-neuron-primary to-red-600 text-white text-lg px-8 py-4 shadow-lg shadow-neuron-primary/20 w-full md:w-auto"
+              >
                 Enroll Now <ArrowRight className="inline-block ml-2 w-5 h-5" />
               </a>
             </div>
