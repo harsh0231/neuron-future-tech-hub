@@ -1,3 +1,4 @@
+
 import { useEffect, useRef } from 'react';
 import { ArrowRight, Cpu, Brain, Database } from 'lucide-react';
 import { motion, useScroll, useTransform } from 'framer-motion';
