@@ -18,34 +18,45 @@ const Index = () => {
   return (
     <Layout>
       <ParticleBackground />
+      
       <Hero />
+      
       <ScrollReveal>
         <WhyChoose />
       </ScrollReveal>
+      
       <ScrollReveal direction="right">
         <Courses />
       </ScrollReveal>
+      
       <ScrollReveal direction="left">
         <SchoolTechCourses />
       </ScrollReveal>
+      
       <ScrollReveal>
         <Gallery />
       </ScrollReveal>
+      
       <ScrollReveal>
         <ProjectShowcase />
       </ScrollReveal>
+      
       <ScrollReveal direction="right">
         <Reviews />
       </ScrollReveal>
+      
       <ScrollReveal direction="left">
         <Testimonials />
       </ScrollReveal>
+      
       <ScrollReveal direction="right">
         <About />
       </ScrollReveal>
+      
       <ScrollReveal>
         <Products />
       </ScrollReveal>
+      
       <ScrollReveal>
         <Contact />
       </ScrollReveal>

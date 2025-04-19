@@ -189,7 +189,7 @@ const SchoolTechCourses: React.FC = () => {
   };
 
   return (
-    <section id="school-tech-courses" className="bg-gradient-to-b from-neuron-dark to-black py-16 md:py-24">
+    <section id="school-tech-courses" className="py-24 md:py-32 bg-gradient-to-b from-neuron-dark to-black w-full">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

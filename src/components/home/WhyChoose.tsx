@@ -36,7 +36,7 @@ const benefits = [
 
 const WhyChoose = () => {
   return (
-    <section id="why-choose" className="py-16 md:py-24 bg-black">
+    <section id="why-choose" className="py-16 md:py-24 bg-black w-full">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

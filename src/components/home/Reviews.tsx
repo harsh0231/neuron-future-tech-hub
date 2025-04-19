@@ -71,7 +71,7 @@ const Reviews = () => {
   };
 
   return (
-    <section id="reviews" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark relative">
+    <section id="reviews" className="py-24 md:py-32 bg-gradient-to-b from-black to-neuron-dark relative w-full">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16 max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">

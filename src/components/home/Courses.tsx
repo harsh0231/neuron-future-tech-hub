@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Download, ArrowRight, Code, Database, Bot, Brain, Eye, BarChart2 } from 'lucide-react';
 import TechIcon from '@/components/ui/TechIcon';
@@ -183,7 +184,7 @@ const Courses = () => {
   };
 
   return (
-    <section id="courses" className="py-16 md:py-24 bg-gradient-to-b from-black to-neuron-dark relative overflow-hidden">
+    <section id="courses" className="py-24 md:py-32 bg-gradient-to-b from-black to-neuron-dark relative overflow-hidden w-full">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 relative inline-block">
@@ -307,7 +308,8 @@ const Courses = () => {
           ))}
         </div>
         
-        <div className="mt-24 glass-card p-12 rounded-xl max-w-6xl mx-auto transform hover:scale-[1.02] transition-all duration-300">
+        {/* Innovator's Pathway Package with improved spacing and alignment */}
+        <div className="mt-32 glass-card p-12 rounded-xl max-w-6xl mx-auto transform hover:scale-[1.02] transition-all duration-300">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white relative inline-block">
               Innovator's Pathway Package
