@@ -151,7 +151,7 @@ const SchoolTechCourses: React.FC = () => {
     return (
       <motion.div 
         key={`class-${classNumber}`}
-        className="glass-card p-6 rounded-xl space-y-4 bg-black/50"
+        className="glass-card p-6 rounded-xl space-y-4 bg-black/50 max-w-4xl mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
@@ -190,7 +190,7 @@ const SchoolTechCourses: React.FC = () => {
 
   return (
     <section id="school-tech-courses" className="bg-gradient-to-b from-neuron-dark to-black py-16 md:py-24">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 max-w-7xl">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-white">Future-Ready </span>

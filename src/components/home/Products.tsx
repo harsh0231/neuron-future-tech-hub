@@ -27,7 +27,7 @@ const products = [
 const Products = () => {
   return (
     <section id="products" className="py-16 md:py-24 bg-black">
-      <div className="container mx-auto px-4 md:px-6">
+      <div className="container mx-auto px-4 md:px-6 max-w-7xl">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             <span className="text-white">Our </span>
@@ -38,7 +38,7 @@ const Products = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {products.map((product, index) => (
             <div 
               key={index} 

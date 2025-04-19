@@ -29,43 +29,55 @@ const Navbar = () => {
             <div className="relative h-14 w-14 rounded-xl bg-gradient-to-br from-neuron-accent via-neuron-primary to-neuron-secondary flex items-center justify-center overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-neuron-primary to-neuron-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               
-              {/* Dynamic circuit patterns */}
+              {/* Enhanced animated circuit patterns */}
               <div className="absolute inset-0">
                 <div className="absolute top-0 left-0 w-full h-full">
-                  <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border border-white/20 rounded-full animate-[spin_8s_linear_infinite]"></div>
-                  <div className="absolute top-1/3 left-1/3 w-1/3 h-1/3 border border-white/30 rounded-full animate-[spin_5s_linear_infinite_reverse]"></div>
-                  <div className="absolute top-[45%] left-[45%] w-[10%] h-[10%] bg-white rounded-full animate-ping"></div>
+                  {/* Animated circuit board pattern */}
+                  <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-white/30 rounded-full animate-[spin_8s_linear_infinite]"></div>
+                  <div className="absolute top-1/3 left-1/3 w-1/3 h-1/3 border border-white/40 rounded-full animate-[spin_5s_linear_infinite_reverse]"></div>
+                  <div className="absolute top-[45%] left-[45%] w-[10%] h-[10%] bg-white rounded-full animate-pulse"></div>
                   
-                  {/* Circuit lines */}
-                  <div className="absolute top-[20%] left-0 w-[80%] h-[1px] bg-white/20 animate-pulse"></div>
-                  <div className="absolute top-[70%] left-[20%] w-[80%] h-[1px] bg-white/20 animate-pulse delay-100"></div>
-                  <div className="absolute top-0 left-[30%] w-[1px] h-[70%] bg-white/20 animate-pulse delay-200"></div>
-                  <div className="absolute top-[30%] left-[80%] w-[1px] h-[70%] bg-white/20 animate-pulse delay-300"></div>
+                  {/* Enhanced circuit lines with more glow */}
+                  <div className="absolute top-[20%] left-0 w-[80%] h-[2px] bg-white/30 animate-pulse"></div>
+                  <div className="absolute top-[70%] left-[20%] w-[80%] h-[2px] bg-white/30 animate-pulse delay-100"></div>
+                  <div className="absolute top-0 left-[30%] w-[2px] h-[70%] bg-white/30 animate-pulse delay-200"></div>
+                  <div className="absolute top-[30%] left-[80%] w-[2px] h-[70%] bg-white/30 animate-pulse delay-300"></div>
+                  
+                  {/* Pulsing nodes */}
+                  <div className="absolute top-[20%] left-[80%] w-[5px] h-[5px] bg-white rounded-full animate-ping"></div>
+                  <div className="absolute top-[70%] left-[20%] w-[5px] h-[5px] bg-white rounded-full animate-ping delay-300"></div>
+                  <div className="absolute top-[40%] left-[40%] w-[5px] h-[5px] bg-white rounded-full animate-ping delay-700"></div>
                 </div>
               </div>
               
-              {/* Main logo icons - rotating 3D grid */}
+              {/* Enhanced Main logo icons - rotating 3D grid with more dynamic effects */}
               <div className="relative z-10 w-8 h-8 animate-[spin_10s_linear_infinite]">
-                <div className="absolute grid grid-cols-2 gap-0.5">
+                <div className="absolute grid grid-cols-2 gap-1">
                   <Brain className="w-3.5 h-3.5 text-white animate-pulse" />
                   <Cpu className="w-3.5 h-3.5 text-white animate-pulse delay-100" />
                   <Server className="w-3.5 h-3.5 text-white animate-pulse delay-200" />
                   <CircuitBoard className="w-3.5 h-3.5 text-white animate-pulse delay-300" />
                 </div>
-                <div className="absolute grid grid-cols-2 gap-0.5 rotate-[30deg]">
-                  <Monitor className="w-3.5 h-3.5 text-white/70 animate-pulse delay-400" />
-                  <Rocket className="w-3.5 h-3.5 text-white/70 animate-pulse delay-500" />
-                  <Zap className="w-3.5 h-3.5 text-white/70 animate-pulse delay-600" />
-                  <Activity className="w-3.5 h-3.5 text-white/70 animate-pulse delay-700" />
+                <div className="absolute grid grid-cols-2 gap-1 rotate-[45deg]">
+                  <Monitor className="w-3.5 h-3.5 text-white/80 animate-pulse delay-400" />
+                  <Rocket className="w-3.5 h-3.5 text-white/80 animate-pulse delay-500" />
+                  <Zap className="w-3.5 h-3.5 text-white/80 animate-pulse delay-600" />
+                  <Activity className="w-3.5 h-3.5 text-white/80 animate-pulse delay-700" />
+                </div>
+                <div className="absolute grid grid-cols-2 gap-1 rotate-[90deg] opacity-30">
+                  <Brain className="w-3.5 h-3.5 text-white animate-pulse delay-800" />
+                  <Cpu className="w-3.5 h-3.5 text-white animate-pulse delay-900" />
+                  <Server className="w-3.5 h-3.5 text-white animate-pulse delay-1000" />
+                  <CircuitBoard className="w-3.5 h-3.5 text-white animate-pulse delay-1100" />
                 </div>
               </div>
               
-              {/* Animated glow effect */}
-              <div className="absolute inset-0 bg-neuron-accent opacity-30 blur-md animate-pulse"></div>
+              {/* Enhanced animated glow effect */}
+              <div className="absolute inset-0 bg-neuron-accent opacity-30 blur-lg animate-pulse"></div>
             </div>
             
             <div className="flex flex-col">
-              <h1 className="font-bold text-2xl bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent group-hover:from-neuron-light group-hover:to-white transition-all duration-300">
+              <h1 className="font-bold text-2xl bg-gradient-to-r from-white via-neuron-light to-gray-300 bg-clip-text text-transparent group-hover:from-neuron-light group-hover:via-white group-hover:to-white transition-all duration-300">
                 NEURON
               </h1>
               <div className="flex items-center gap-1">
