@@ -1,7 +1,13 @@
-
 import { useState } from 'react';
-import { Download, ArrowRight, Code, Database, Bot, Brain, Eye, BarChart2 } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import TechIcon from '@/components/ui/TechIcon';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 import { 
   Accordion,
   AccordionContent,
@@ -242,73 +248,81 @@ const Courses = () => {
           />
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
-          {courses.map((course, index) => (
-            <div 
-              key={index} 
-              className={`glass-card rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2 ${
-                expandedCourse === index ? 'xl:col-span-4 row-span-2' : ''
-              }`}
-            >
-              <div className={`bg-gradient-to-r ${course.color} h-2`}></div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-white">{course.title}</h3>
-                <p className="text-gray-400 mb-6 text-lg">{course.description}</p>
-                
-                <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-6">
-                  <div>
-                    <span className="text-white text-3xl font-bold">{course.price}</span>
-                    <p className="text-gray-400 text-sm mt-1">Duration: {course.duration}</p>
-                  </div>
-                  <div className="flex gap-3 w-full md:w-auto">
-                    <button 
-                      onClick={() => toggleCourse(index)} 
-                      className="px-6 py-2.5 rounded-full text-white border border-neuron-primary hover:bg-neuron-primary/20 transition-all flex-1 md:flex-none"
-                    >
-                      {expandedCourse === index ? "Close" : "Details"}
-                    </button>
-                    <a 
-                      href="#contact" 
-                      className={`bg-gradient-to-r ${course.color} text-white px-6 py-2.5 rounded-full ${course.shadow} hover:shadow-lg transition-all flex-1 md:flex-none text-center`}
-                    >
-                      Enroll Now
-                    </a>
-                  </div>
-                </div>
-                
-                {expandedCourse === index && (
-                  <div className="mt-6 animate-fadeIn">
-                    <h4 className="text-lg font-semibold text-white mb-4">Course Syllabus</h4>
-                    <Accordion type="single" collapsible className="w-full">
-                      {course.modules.map((module, moduleIndex) => (
-                        <AccordionItem key={moduleIndex} value={`module-${moduleIndex}`} className="border-neuron-primary/20">
-                          <AccordionTrigger className="text-white hover:no-underline hover:text-neuron-light">
-                            {module.title}
-                          </AccordionTrigger>
-                          <AccordionContent className="text-gray-400">
-                            {module.content}
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
-                    
-                    <div className="mt-6 p-4 bg-neuron-primary/10 rounded-lg">
-                      <h5 className="text-white font-semibold mb-2">Capstone Projects</h5>
-                      <p className="text-gray-400">
-                        {course.title === "Data Science" && "Custom Chatbot Development, Face Recognition System, Sales forecasting, and collaboration with MNCs."}
-                        {course.title === "Data Analytics" && "Business Intelligence Dashboard, Predictive Analytics Model, and Data-Driven Decision Making System."}
-                        {course.title === "IoT (Internet of Things)" && "Smart Home System, IoT Weather Station, Healthcare IoT device, and Smart Agriculture System."}
-                        {course.title === "ROS 2 & Autonomous Systems" && "TurtleBot Autonomous Navigation, SLAM implementation, and Multi-Robot coordination."}
-                      </p>
+        <div className="relative px-12">
+          <Carousel
+            opts={{
+              align: "center",
+              loop: true,
+            }}
+            className="w-full max-w-5xl mx-auto"
+          >
+            <CarouselContent>
+              {courses.map((course, index) => (
+                <CarouselItem key={index}>
+                  <div className={`glass-card rounded-xl overflow-hidden transform transition-all duration-300 hover:-translate-y-2`}>
+                    <div className={`bg-gradient-to-r ${course.color} h-2`}></div>
+                    <div className="p-8">
+                      <h3 className="text-2xl font-bold mb-4 text-white">{course.title}</h3>
+                      <p className="text-gray-400 mb-6 text-lg">{course.description}</p>
+                      
+                      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-6">
+                        <div>
+                          <span className="text-white text-3xl font-bold">{course.price}</span>
+                          <p className="text-gray-400 text-sm mt-1">Duration: {course.duration}</p>
+                        </div>
+                        <div className="flex gap-3 w-full md:w-auto">
+                          <button 
+                            onClick={() => toggleCourse(index)} 
+                            className="px-6 py-2.5 rounded-full text-white border border-neuron-primary hover:bg-neuron-primary/20 transition-all flex-1 md:flex-none"
+                          >
+                            {expandedCourse === index ? "Close" : "Details"}
+                          </button>
+                          <a 
+                            href="#contact" 
+                            className={`bg-gradient-to-r ${course.color} text-white px-6 py-2.5 rounded-full shadow-${course.shadow} hover:shadow-lg transition-all flex-1 md:flex-none text-center`}
+                          >
+                            Enroll Now
+                          </a>
+                        </div>
+                      </div>
+                      
+                      {expandedCourse === index && (
+                        <div className="mt-6 animate-fadeIn">
+                          <h4 className="text-lg font-semibold text-white mb-4">Course Syllabus</h4>
+                          <Accordion type="single" collapsible className="w-full">
+                            {course.modules.map((module, moduleIndex) => (
+                              <AccordionItem key={moduleIndex} value={`module-${moduleIndex}`} className="border-neuron-primary/20">
+                                <AccordionTrigger className="text-white hover:no-underline hover:text-neuron-light">
+                                  {module.title}
+                                </AccordionTrigger>
+                                <AccordionContent className="text-gray-400">
+                                  {module.content}
+                                </AccordionContent>
+                              </AccordionItem>
+                            ))}
+                          </Accordion>
+                          
+                          <div className="mt-6 p-4 bg-neuron-primary/10 rounded-lg">
+                            <h5 className="text-white font-semibold mb-2">Capstone Projects</h5>
+                            <p className="text-gray-400">
+                              {course.title === "Data Science" && "Custom Chatbot Development, Face Recognition System, Sales forecasting, and collaboration with MNCs."}
+                              {course.title === "Data Analytics" && "Business Intelligence Dashboard, Predictive Analytics Model, and Data-Driven Decision Making System."}
+                              {course.title === "IoT (Internet of Things)" && "Smart Home System, IoT Weather Station, Healthcare IoT device, and Smart Agriculture System."}
+                              {course.title === "ROS 2 & Autonomous Systems" && "TurtleBot Autonomous Navigation, SLAM implementation, and Multi-Robot coordination."}
+                            </p>
+                          </div>
+                        </div>
+                      )}
                     </div>
                   </div>
-                )}
-              </div>
-            </div>
-          ))}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="bg-neuron-primary text-white hover:bg-neuron-primary/80 -left-2" />
+            <CarouselNext className="bg-neuron-primary text-white hover:bg-neuron-primary/80 -right-2" />
+          </Carousel>
         </div>
         
-        {/* Innovator's Pathway Package with improved spacing and alignment */}
         <div className="mt-32 glass-card p-12 rounded-xl max-w-6xl mx-auto transform hover:scale-[1.02] transition-all duration-300">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white relative inline-block">
